@@ -166,12 +166,6 @@ export default function StaffDashboard() {
                 <h3>Shuttle speed</h3>
                 <p className="big-num">{shuttle.speed} mph</p>
               </div>
-
-              {/* QR Code Card */}
-              {/* <div className="card">
-                <h3>Trip QR Code</h3>
-                <QRCode value={`shuttle-${Date.now()}`} size={128} />
-              </div> */}
             </div>
           </div>
         </>
