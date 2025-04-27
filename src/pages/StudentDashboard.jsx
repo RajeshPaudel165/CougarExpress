@@ -87,10 +87,10 @@ export default function StudentDashboard() {
             {count}/{capacity}
           </p>
         </div>
-        <div className="card">
+        {/* <div className="card">
           <h3>Shuttle speed</h3>
           <p className="big-num">{shuttle.speed} mph</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
