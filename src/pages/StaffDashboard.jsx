@@ -85,6 +85,8 @@ export default function StaffDashboard() {
 
   return (
     <>
+      <br/>
+      <br/>
       <h1 className="dashboard-title">Driver Dashboard</h1>
       {!tripStarted ? (
         <div className="center-btn">
