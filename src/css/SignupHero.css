@@ -1,0 +1,132 @@
+.signup-hero {
+  position: relative;
+  overflow: hidden; /* contain the overlay */
+  background: url("../assets/CE-Banner-scaled.webp") center/cover no-repeat;
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.signup-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 150px; /* how tall the fade is */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 90%);
+  pointer-events: none; /* clicks pass through */
+}
+
+.signup-hero__button {
+  position: absolute;
+  top: 72%;
+  left: 28%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.signup-hero__qr {
+  position: absolute;
+  top: 52%;
+  right: 3%;
+  width: 150px;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  text-align: center;
+}
+
+.signup-hero__qr img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.signup-hero__qr p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* Tablet / small desktop */
+@media (max-width: 1024px) {
+  .signup-hero {
+    min-height: 60vh;
+    padding: 1.5rem;
+    background-position: center top;
+  }
+
+  /* Move the button toward center/bottom on narrower screens */
+  .signup-hero__button {
+    top: 65%;
+    left: 50%;
+  }
+
+  /* Shrink the QR panel */
+  .signup-hero__qr {
+    width: 120px;
+    padding: 0.75rem;
+    top: 50%;
+    right: 2%;
+  }
+
+  .signup-hero__qr p {
+    font-size: 0.75rem;
+  }
+}
+
+/* Tablet portrait / large phones */
+@media (max-width: 768px) {
+  .signup-hero {
+    min-height: 50vh;
+    padding: 1rem;
+  }
+
+  .signup-hero__button {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .signup-hero__qr {
+    width: 100px;
+    padding: 0.5rem;
+    top: 55%;
+    right: 5%;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .signup-hero {
+    min-height: 40vh;
+    padding: 0.75rem;
+    background-position: center center;
+  }
+
+  /* Button down near the bottom, full-width */
+  .signup-hero__button {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 1rem auto 0;
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Hide or move the QR on very small screens */
+  .signup-hero__qr {
+    display: none;
+  }
+}

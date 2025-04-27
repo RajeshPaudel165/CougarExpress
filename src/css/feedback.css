@@ -1,0 +1,87 @@
+/* src/css/feedback.css */
+.feedback-form,
+.feedback-thanks {
+  max-width: 600px;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+.feedback-form h3,
+.feedback-thanks h3 {
+  margin-top: 0;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.feedback-form button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  background: red;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.feedback-form button:hover {
+  background: rgb(228, 93, 93);
+}
+
+/* src/css/feedback.css */
+/* …your existing rules… */
+
+/* Tablet and small desktop */
+@media (max-width: 768px) {
+  .feedback-form,
+  .feedback-thanks {
+    max-width: 90%;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+  }
+
+  .feedback-form input,
+  .feedback-form textarea {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .feedback-form button {
+    padding: 0.6rem 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .feedback-form,
+  .feedback-thanks {
+    max-width: 95%;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  .feedback-form input,
+  .feedback-form textarea {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .feedback-form button {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}

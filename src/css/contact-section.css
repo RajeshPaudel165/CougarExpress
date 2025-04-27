@@ -1,0 +1,83 @@
+/* src/css/contact-section.css */
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2vw, 2.5rem);
+  justify-content: center;
+  align-items: flex-start;
+  margin: clamp(1rem, 3vw, 3rem) 0;
+}
+
+.map-col,
+.form-col {
+  flex: 1 1 350px;
+  max-width: 600px;
+  min-width: 280px;
+}
+
+/* push map down to match form padding */
+.map-col {
+  padding-top: clamp(1rem, 2vw, 2rem);
+}
+
+.map-col .map-container {
+  width: 100%;
+  height: clamp(250px, 30vw, 450px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.map-col .map-container iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.form-col .feedback-form,
+.form-col .feedback-thanks {
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    flex-direction: column;
+    gap: clamp(1rem, 4vw, 2rem);
+    margin: 1rem 0;
+  }
+
+  .map-col,
+  .form-col {
+    max-width: 95%;
+    margin: 0 auto;
+  }
+
+  .map-col {
+    /* same top padding in mobile */
+    padding-top: clamp(1rem, 2vw, 2rem);
+  }
+
+  .map-col .map-container {
+    height: clamp(200px, 40vw, 300px);
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    gap: 1rem;
+  }
+
+  .map-col .map-container {
+    height: 200px;
+  }
+
+  .form-col .feedback-form input,
+  .form-col .feedback-form textarea {
+    padding: 0.65rem;
+    font-size: 0.9rem;
+  }
+
+  .form-col .feedback-form button {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+  }
+}

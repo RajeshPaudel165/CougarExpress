@@ -1,0 +1,143 @@
+/* src/css/Footer.css */
+.footer {
+  background: #1a1a1a;
+  color: #ddd;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  margin-top: 8rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.footer-section.about {
+  flex: 1 1 300px;
+}
+
+.footer-section.links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section.links ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section.links ul li a,
+.footer-section.links ul li button {
+  color: #ddd;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  display: inline-block;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+.footer-section.links ul li a:hover,
+.footer-section.links ul li button:hover {
+  color: #e63946;
+  text-decoration: underline;
+}
+
+.footer-section.social .social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-section.social .social-icons a {
+  color: #ddd;
+  font-size: 1.25rem;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footer-section.social .social-icons a:hover {
+  color: #e63946;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: none;
+  padding-top: 1rem;
+}
+
+.footer-bottom hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Breakpoints */
+/* Large screens */
+@media (max-width: 1200px) {
+  .footer-content {
+    gap: 1.5rem;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 992px) {
+  .footer {
+    padding: 1.75rem 0.75rem;
+  }
+  .footer-content {
+    gap: 1.25rem;
+  }
+  .footer-section.about,
+  .footer-section.links,
+  .footer-section.social {
+    flex: 1 1 250px;
+  }
+}
+
+/* Tablets and small desktops */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-section.links ul {
+    display: inline-block;
+  }
+  .footer-section.social .social-icons {
+    justify-content: center;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 576px) {
+  .footer {
+    padding: 1.5rem 0.5rem;
+    font-size: 0.85rem;
+    margin-top: 6rem;
+  }
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 1rem;
+  }
+  .footer-section.about,
+  .footer-section.links,
+  .footer-section.social {
+    flex: 1 1 100%;
+  }
+  .footer-section.links ul li {
+    margin-bottom: 0.75rem;
+  }
+}

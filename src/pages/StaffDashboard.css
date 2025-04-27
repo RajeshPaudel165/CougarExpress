@@ -1,0 +1,247 @@
+/* StaffDashboard.css */
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  width: min(1200px, 95%);
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.map-wrapper {
+  flex: 2 1 600px;
+  max-width: 800px;
+  min-width: 300px;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-panel {
+  flex: 1 1 280px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.big-num {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.dashboard-title {
+  margin: 70px 0 1rem;
+  text-align: center;
+}
+
+.slider-wrapper {
+  width: 100%;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: #e4e4e4;
+  overflow: hidden;
+}
+
+/* Base fill: inherits height & rounding, animates width smoothly */
+.slider-fill {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+/* Occupancy-based color bands */
+.slider-fill.low {
+  background: #06d6a0;
+} /* 0–5 students */
+.slider-fill.mid {
+  background: linear-gradient(to right, #06d6a0 0%, #ffd166 100%);
+} /* 6–10 */
+.slider-fill.high {
+  background: linear-gradient(to right, #06d6a0 0%, #ffd166 60%, #ef476f 100%);
+} /* 11–15 */
+
+.start-trip-btn,
+.end-trip-btn {
+  background-color: #d90429;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 2rem;
+}
+
+.start-trip-btn:hover,
+.end-trip-btn:hover {
+  background-color: #ef233c;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .map-wrapper {
+    flex: 1 1 100%;
+    max-width: 100%;
+    height: 300px;
+  }
+
+  .info-panel {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .big-num {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.8rem;
+    margin-top: 50px;
+  }
+
+  .start-trip-btn,
+  .end-trip-btn {
+    width: 90%;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-wrapper {
+    height: 250px;
+  }
+
+  .big-num {
+    font-size: 1.3rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .start-trip-btn,
+  .end-trip-btn {
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+  }
+}
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  width: min(1200px, 95%);
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.map-wrapper {
+  flex: 2 1 600px;
+  max-width: 800px;
+  min-width: 300px;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-panel {
+  flex: 1 1 280px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.big-num {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.dashboard-title {
+  margin: 70px 0 1rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .map-wrapper {
+    width: 100%;
+    height: 400px;
+  }
+
+  .info-panel {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    width: 45%;
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-wrapper {
+    height: 300px;
+  }
+
+  .info-panel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .big-num {
+    font-size: 1.5rem;
+  }
+}
