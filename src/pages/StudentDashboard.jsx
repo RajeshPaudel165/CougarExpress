@@ -4,12 +4,11 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import "./StudentDashboard.css";
 
-const FALLBACK_CENTER = { lat: 40.834, lng: -74.273 }; // Caldwell University approx
+const FALLBACK_CENTER = { lat: 40.83392, lng: -74.27238 };
 
-const mapStyles = {
+const mapContainerStyle = {
   width: "100%",
   height: "100%",
-  borderRadius: "12px",
 };
 
 export default function StudentDashboard() {
@@ -25,55 +24,44 @@ export default function StudentDashboard() {
 
   useEffect(() => {
     const unsub = onSnapshot(doc(db, "shuttles", "bus1"), (snap) => {
-      if (snap.exists()) {
-        setShuttle(snap.data());
-      }
+      if (snap.exists()) setShuttle(snap.data());
     });
     return unsub;
   }, []);
 
-  if (loadError) return <p style={{ padding: "2rem" }}>Error loading maps.</p>;
-  if (!isLoaded) return <p style={{ padding: "2rem" }}>Loading map …</p>;
+  if (loadError) return <div>Error loading map</div>;
+  if (!isLoaded) return <div>Loading...</div>;
 
   return (
-    <>
-      <h1 className="dashboard-title">Student Dashboard</h1>
+    <div className="dashboard">
+      <div className="map-wrapper">
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          center={shuttle.location}
+          zoom={15}
+        >
+          <Marker position={shuttle.location} />
+        </GoogleMap>
+      </div>
 
-      <div className="dashboard">
-        <div className="map-wrapper">
-          <GoogleMap
-            mapContainerStyle={mapStyles}
-            center={shuttle.location}
-            zoom={14}
-            options={{ disableDefaultUI: true, zoomControl: true }}
-          >
-            <Marker
-              position={shuttle.location}
-              title="Shuttle Current Location"
-            />
-          </GoogleMap>
+      <div className="info-panel">
+        <div className="card">
+          <h3>Shuttle Current Location</h3>
+          <div className="big-num">
+            {shuttle.location.lat.toFixed(5)}, {shuttle.location.lng.toFixed(5)}
+          </div>
         </div>
 
-        <div className="info-panel">
-          <div className="card">
-            <h3>Shuttle Current Location</h3>
-            <p className="big-num">
-              {shuttle.location.lat?.toFixed(5)},{" "}
-              {shuttle.location.lng?.toFixed(5)}
-            </p>
-          </div>
+        <div className="card">
+          <h3>Speed</h3>
+          <div className="big-num">{shuttle.speed} mph</div>
+        </div>
 
-          <div className="card">
-            <h3>Speed</h3>
-            <p className="big-num">{shuttle.speed} mph</p>
-          </div>
-
-          <div className="card">
-            <h3>Students on Board</h3>
-            <p className="big-num">{shuttle.occupancy}/15</p>
-          </div>
+        <div className="card">
+          <h3>Students on Board</h3>
+          <div className="big-num">{shuttle.occupancy}/15</div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
