@@ -84,7 +84,7 @@ export default function StudentDashboard() {
               position={shuttle.location}
               title="Shuttle Current Location"
               icon={{
-                url: "/bus-icon.png", // OPTIONAL: add bus icon to public folder if you want
+                url: "../assets/bus-icon.png", // OPTIONAL: add bus icon to public folder if you want
                 scaledSize: new window.google.maps.Size(50, 50),
               }}
             />
