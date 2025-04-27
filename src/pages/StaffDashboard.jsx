@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  Marker,
+  useJsApiLoader,
+  Circle,
+} from "@react-google-maps/api";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import "./StudentDashboard.css";
@@ -10,6 +15,15 @@ const mapStyles = {
   width: "100%",
   height: "100%",
   borderRadius: "12px",
+};
+
+const circleOptions = {
+  strokeColor: "#0000FF",
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: "#ADD8E6",
+  fillOpacity: 0.35,
+  radius: 50, // Adjust the radius as needed (in meters)
 };
 
 export default function StudentDashboard() {
@@ -27,9 +41,9 @@ export default function StudentDashboard() {
     const unsub = onSnapshot(doc(db, "shuttles", "bus1"), (snap) => {
       if (snap.exists()) {
         const newData = snap.data();
-        animateMove(newData.location);
         setShuttle((prev) => ({
           ...prev,
+          location: newData.location, // Directly update the location for smoother movement
           speed: newData.speed,
           occupancy: newData.occupancy,
         }));
@@ -37,33 +51,6 @@ export default function StudentDashboard() {
     });
     return unsub;
   }, []);
-
-  function animateMove(newLocation) {
-    setShuttle((prevShuttle) => {
-      const { location } = prevShuttle;
-
-      if (!location) return { ...prevShuttle, location: newLocation };
-
-      const deltaLat = (newLocation.lat - location.lat) / 20;
-      const deltaLng = (newLocation.lng - location.lng) / 20;
-
-      let i = 0;
-      const interval = setInterval(() => {
-        i++;
-        setShuttle((prev) => ({
-          ...prev,
-          location: {
-            lat: prev.location.lat + deltaLat,
-            lng: prev.location.lng + deltaLng,
-          },
-        }));
-        if (i >= 20) {
-          clearInterval(interval);
-        }
-      }, 50); // 20 frames over 1 second
-      return prevShuttle;
-    });
-  }
 
   if (loadError) return <p style={{ padding: "2rem" }}>Error loading maps.</p>;
   if (!isLoaded) return <p style={{ padding: "2rem" }}>Loading map …</p>;
@@ -77,17 +64,19 @@ export default function StudentDashboard() {
           <GoogleMap
             mapContainerClassName="map-wrapper"
             center={shuttle.location}
-            zoom={14}
+            zoom={15} // Slightly increased zoom for better visibility
             options={{ disableDefaultUI: true, zoomControl: true }}
           >
-            <Marker
+            <Circle center={shuttle.location} options={circleOptions} />
+            {/* OPTIONAL: Keep the marker if you prefer both the circle and the icon */}
+            {/* <Marker
               position={shuttle.location}
               title="Shuttle Current Location"
               icon={{
-                url: "../assets/bus-icon.png", // OPTIONAL: add bus icon to public folder if you want
+                url: "/bus-icon.png",
                 scaledSize: new window.google.maps.Size(50, 50),
               }}
-            />
+            /> */}
           </GoogleMap>
         </div>
 
