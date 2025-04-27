@@ -2,15 +2,9 @@ import React, { useEffect, useState } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
-import "./StudentDashboard.css";
+import "./StaffDashboard.css";
 
 const FALLBACK_CENTER = { lat: 40.834, lng: -74.273 }; // Caldwell University approx
-
-const mapStyles = {
-  width: "100%",
-  height: "100%",
-  borderRadius: "12px",
-};
 
 export default function StudentDashboard() {
   const { isLoaded, loadError } = useJsApiLoader({
@@ -70,7 +64,7 @@ export default function StudentDashboard() {
 
   return (
     <>
-      <h1 className="dashboard-title">Student Dashboard</h1>
+      <h1 className="dashboard-title">Staff Dashboard</h1>
 
       <div className="dashboard">
         <div className="map-wrapper">
@@ -84,7 +78,7 @@ export default function StudentDashboard() {
               position={shuttle.location}
               title="Shuttle Current Location"
               icon={{
-                url: "/bus-icon.png", // OPTIONAL: add bus icon to public folder if you want
+                url: "/bus-icon.png",
                 scaledSize: new window.google.maps.Size(50, 50),
               }}
             />
