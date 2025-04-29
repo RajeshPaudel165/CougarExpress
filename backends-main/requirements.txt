@@ -1,0 +1,6 @@
+flask
+firebase-admin
+gunicorn
+python-dotenv
+Flask-Talisman
+Flask-WTF
